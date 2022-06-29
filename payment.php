@@ -54,6 +54,21 @@ $billappointmentid = $_GET['appointmentid'];
             <td><input name="paidamount" type="text" id="paidamount" value="0"></td>
           </tr>
           <tr>
+						<td>Payment Option</td>
+						<td>
+                            <select class="form-control show-tick" name="payment" id="payment">
+                                <option value="">Select</option>
+                                <?php
+                                $sqldept = "SELECT * FROM payopt WHERE status='Active'";
+                                $qsqldept = mysqli_query($con, $sqldept);
+                                while ($rsdept = mysqli_fetch_array($qsqldept)) {
+                                    echo "<option value='$rsdept[payname]'>$rsdept[payname]</option>";
+                                }
+                                ?>
+                            </select>
+						</td>
+					</tr>
+          <tr>
             <td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit" /></td>
           </tr>
         </tbody>

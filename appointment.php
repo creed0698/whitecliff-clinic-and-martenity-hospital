@@ -87,7 +87,7 @@ if (isset($_GET['editid'])) {
                                 <div class="form-group">
                                     <div class="form-line">
                                         <select name="select5" id="select5" class=" form-control show-tick">
-                                            <option value="">Select</option>
+                                            <option value="">Select Branch</option>
                                             <?php
                                             $sqlbranch = "SELECT * FROM branch WHERE status='Active'";
                                             $qsqlbranch = mysqli_query($con, $sqlbranch);
@@ -147,7 +147,7 @@ if (isset($_GET['editid'])) {
                                 <div class="form-group">
                                     <div class="form-line">
                                         <select name="select5" id="select5" class=" form-control show-tick">
-                                            <option value="">Select</option>
+                                            <option value="">Select Service</option>
                                             <?php
                                             $sqloffer = "SELECT * FROM offeredservice WHERE status='Active'";
                                             $qsqloffer = mysqli_query($con, $sqloffer);
@@ -164,6 +164,27 @@ if (isset($_GET['editid'])) {
                                     </div>
                                     </div>
                                 </div>
+                                <div class="col-sm-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <select name="select5" id="select5" class=" form-control show-tick">
+                                            <option value="">Select Option</option>
+                                            <?php
+                                            $sqlpay = "SELECT * FROM payopt WHERE status='Active'";
+                                            $qsqlpay = mysqli_query($con, $sqlpay);
+                                            while ($rspay = mysqli_fetch_array($qsqlpay)) {
+                                                if ($rspay['payid'] == $rsedit['payid']) {
+                                                    echo "<option value='$rspay[payid]' selected>$rspay[payname]</option>";
+                                                } else {
+                                                    echo "<option value='$rspay[payid]'>$rspay[payname]</option>";
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                             <div class="col-sm-4 ">
                                 <div class="form-group drop-custum">

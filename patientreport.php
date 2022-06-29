@@ -146,6 +146,16 @@ if (isset($_GET['editid'])) {
 			</div><!-- .toggle-content (end) -->
 		</div><!-- .toggle (end) -->
 
+		<!-- Toggle #3 -->
+		<div class="toggle">
+			<!-- Toggle Link -->
+			<a href="#" title="Title of Toggle" class="toggle-trigger">Payment</a>
+			<!-- Toggle Content to display -->
+			<div class="toggle-content">
+				<p><?php include("appointmentdetail.php"); ?></p>
+			</div><!-- .toggle-content (end) -->
+		</div><!-- .toggle (end) -->
+
 
 		<?php
 		if (isset($_SESSION['adminid'])) {

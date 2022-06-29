@@ -32,10 +32,6 @@ if (mysqli_num_rows($qsqlappointment) == 0) {
 	$qsqlappointment = mysqli_query($con, $sqlappointment);
 	$rsappointment = mysqli_fetch_array($qsqlappointment);
 
-	$sqlroom = "SELECT * FROM room where roomid='$rsappointment[roomid]' ";
-	$qsqlroom = mysqli_query($con, $sqlroom);
-	$rsroom = mysqli_fetch_array($qsqlroom);
-
 	$sqlbranch = "SELECT * FROM branch where branchid='$rsappointment[branchid]'";
 	$qsqlbranch = mysqli_query($con, $sqlbranch);
 	$rsbranch = mysqli_fetch_array($qsqlbranch);
