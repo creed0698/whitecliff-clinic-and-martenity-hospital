@@ -100,14 +100,6 @@ if (isset($_SESSION['doctorid'])) {
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-12">
-                            <div class="form-group">
-                                <label>Consultancy charge</label>
-                                <div class="form-line">
-
-                                    <input class="form-control" type="text" name="consultancy_charge" id="consultancy_charge" value="<?php echo $rsedit['consultancy_charge']; ?>" />
-                                </div>
-                            </div>
-
                             <input class="btn btn-raised" type="submit" name="submit" id="submit" value="Submit" />
                         </div>
                     </div>

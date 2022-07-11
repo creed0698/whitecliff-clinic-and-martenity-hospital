@@ -43,11 +43,11 @@ $billappointmentid = $_GET['appointmentid'];
           <tbody>
             <tr>
               <td>Balance amount</td>
-              <td><input class="form-control" name="balamt" type="text" id="balamt" value="<?php echo $balanceamt; ?>" readonly onkeyup="calculatepayable()"></td>
+              <td><input class="form-control" name="balamt" type="text" id="balamt" value="<?php echo "$balanceamt"; ?>" readonly onkeyup="calculatepayable()"></td>
             </tr>
             <tr>
               <td>Payable amount</td>
-              <td><input class="form-control" name="paidamount" type="text" id="paidamount" value="<?php echo $balanceamt; ?>" readonly></td>
+              <td><input class="form-control" name="paidamount" type="text" id="paidamount" value="<?php echo "$balanceamt"; ?>" readonly></td>
             </tr>
             <tr>
               <td colspan="2" align="center"><input class="form-control" type="submit" name="submitfullamount" id="submitfullamount" value="Submit" /></td>

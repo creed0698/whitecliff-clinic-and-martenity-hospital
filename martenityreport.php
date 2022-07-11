@@ -4,14 +4,14 @@ error_reporting(0);
 include("adheader.php");
 if (isset($_POST['submit'])) {
 	if (isset($_GET['editid'])) {
-		$sql = "UPDATE appointment SET patientid='$_POST[select4]',branchid='$_POST[select5]',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]',serviceid='$_POST[select6]',status='$_POST[select]' WHERE appointmentid='$_GET[editid]'";
+		$sql = "UPDATE martenityap SET martenityid='$_POST[select4]',branchid='$_POST[select5]',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]',serviceid='$_POST[select6]',payid='$_POST[select7]',status='$_POST[select]' WHERE martenityappointid='$_GET[editid]'";
 		if ($qsql = mysqli_query($con, $sql)) {
 			echo "<script>alert('Appointment Record Updated Successfully!');</script>";
 		} else {
 			echo mysqli_error($con);
 		}
 	} else {
-		$sql = "INSERT INTO appointment(patientid,branchid,appointmentdate,appointmenttime,serviceid,status) values('$_POST[select4]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select]')";
+		$sql = "INSERT INTO martenityap(martenityid,branchid,appointmentdate,appointmenttime,serviceid,payid,status) values('$_POST[select4]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select7]','$_POST[select]')";
 		if ($qsql = mysqli_query($con, $sql)) {
 			echo "<script>alert('Appointment Record Inserted Successfully!');</script>";
 		} else {
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 	}
 }
 if (isset($_GET['editid'])) {
-	$sql = "SELECT * FROM appointment WHERE appointmentid='$_GET[editid]' ";
+	$sql = "SELECT * FROM martenityap WHERE martenityappointid='$_GET[editid]' ";
 	$qsql = mysqli_query($con, $sql);
 	$rsedit = mysqli_fetch_array($qsql);
 }
@@ -132,7 +132,7 @@ if (isset($_GET['editid'])) {
 			<a href="#" title="Title of Toggle" class="toggle-trigger">Patient Profile</a>
 			<!-- Toggle Content to display -->
 			<div class="toggle-content">
-				<p><?php include("patientdetail.php"); ?></p>
+				<p><?php include("martenitydetail.php"); ?></p>
 			</div><!-- .toggle-content (end) -->
 		</div><!-- .toggle (end) -->
 
@@ -142,19 +142,10 @@ if (isset($_GET['editid'])) {
 			<a href="#" title="Title of Toggle" class="toggle-trigger">Appointment record</a>
 			<!-- Toggle Content to display -->
 			<div class="toggle-content">
-				<p><?php include("appointmentdetail.php"); ?></p>
+				<p><?php include("martenityapdetail.php"); ?></p>
 			</div><!-- .toggle-content (end) -->
 		</div><!-- .toggle (end) -->
 
-		<!-- Toggle #3 -->
-		<div class="toggle">
-			<!-- Toggle Link -->
-			<a href="#" title="Title of Toggle" class="toggle-trigger">Payment Report</a>
-			<!-- Toggle Content to display -->
-			<div class="toggle-content">
-				<p><?php include("paymentdischarge.php"); ?></p>
-			</div><!-- .toggle-content (end) -->
-		</div><!-- .toggle (end) -->
 
 		<?php
 		if (isset($_SESSION['adminid'])) {

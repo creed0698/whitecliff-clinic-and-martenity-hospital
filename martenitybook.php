@@ -4,26 +4,26 @@ error_reporting(0);
 include("header.php");
 include("dbconnection.php");
 if (isset($_POST['submit'])) {
-    if (isset($_SESSION['patientid'])) {
-        $lastinsid = $_SESSION['patientid'];
+    if (isset($_SESSION['martenityid'])) {
+        $lastinsid = $_SESSION['martenityid'];
     } else {
         $dt = date("Y-m-d");
         $tim = date("H:i:s");
-        $sql = "INSERT INTO patient(patientname,admissiondate,admissiontime,address,city,mobileno,loginid,password,gender,dob,status) values('$_POST[patiente]','$dt','$tim','$_POST[textarea]','$_POST[city]','$_POST[mobileno]','$_POST[loginid]','$_POST[password]','$_POST[select6]','$_POST[dob]','Active')";
+        $sql = "INSERT INTO martenity(martenityname,admissiondate,admissiontime,address,city,mobileno,loginid,password,gender,dob,status) values('$_POST[patiente]','$dt','$tim','$_POST[textarea]','$_POST[city]','$_POST[mobileno]','$_POST[loginid]','$_POST[password]','$_POST[select6]','$_POST[dob]','Active')";
         if ($qsql = mysqli_query($con, $sql)) {
-            /* echo "<script>alert('patient record inserted successfully...');</script>"; */
+            echo "<script>alert('patient record inserted successfully...');</script>";
         } else {
             echo mysqli_error($con);
         }
         $lastinsid = mysqli_insert_id($con);
     }
 
-    $sqlappointment = "SELECT * FROM appointment WHERE appointmentdate='$_POST[appointmentdate]' AND appointmenttime='$_POST[appointmenttime]' AND serviceid='$_POST[serviceid]' AND status='Approved'";
+    $sqlappointment = "SELECT * FROM martenityap WHERE appointmentdate='$_POST[appointmentdate]' AND appointmenttime='$_POST[appointmenttime]' AND status='Approved'";
     $qsqlappointment = mysqli_query($con, $sqlappointment);
     if (mysqli_num_rows($qsqlappointment) >= 1) {
         echo "<script>alert('Appointment Already Scheduled for This Time.');</script>";
     } else {
-        $sql = "INSERT INTO appointment(patientid,appointmentdate,appointmenttime,app_reason,status,branchid,serviceid) values('$lastinsid','$_POST[appointmentdate]','$_POST[appointmenttime]','$_POST[app_reason]','Pending','$_POST[branchid]','$_POST[serviceid]')";
+        $sql = "INSERT INTO martenityap(martenityid,branchid,appointmentdate,appointmenttime,serviceid,payid,status) values('$lastinsid','$_POST[branch]','$_POST[appointmentdate]','$_POST[appointmenttime]','$_POST[serviceid]','$_POST[pay]','Pending')";
         if ($qsql = mysqli_query($con, $sql)) {
             echo "<script>alert('Appointment Record Inserted Successfully...');</script>";
         } else {
@@ -32,12 +32,12 @@ if (isset($_POST['submit'])) {
     }
 }
 if (isset($_GET['editid'])) {
-    $sql = "SELECT * FROM appointment WHERE appointmentid='$_GET[editid]' ";
+    $sql = "SELECT * FROM martenityap WHERE martenityappointid='$_GET[editid]' ";
     $qsql = mysqli_query($con, $sql);
     $rsedit = mysqli_fetch_array($qsql);
 }
-if (isset($_SESSION['patientid'])) {
-    $sqlpatient = "SELECT * FROM patient WHERE patientid='$_SESSION[patientid]' ";
+if (isset($_SESSION['martenityid'])) {
+    $sqlpatient = "SELECT * FROM martenity WHERE martenityid='$_SESSION[martenityid]' ";
     $qsqlpatient = mysqli_query($con, $sqlpatient);
     $rspatient = mysqli_fetch_array($qsqlpatient);
     $readonly = " readonly";
@@ -53,7 +53,7 @@ if (isset($_SESSION['patientid'])) {
             if (mysqli_num_rows($qsqlappointment) >= 1) {
                 echo "<h2>Appointment already scheduled for " . date("d-M-Y", strtotime($_POST['appointmentdate'])) . " " . date("H:i A", strtotime($_POST['appointmenttime'])) . " .. </h2>";
             } else {
-                if (isset($_SESSION['patientid'])) {
+                if (isset($_SESSION['martenityid'])) {
                     echo '<section class="p-t-b-150">
              <div class="container">
              <div class="intro-main">
@@ -64,7 +64,7 @@ if (isset($_SESSION['patientid'])) {
                                 <h4>Appointment taken successfully</h4>
                             </div>
                             <p>Appointment record is in pending process. Kinldy check the appointment status.</p>
-                            <p> <a href="viewappointment.php">View Appointment record</a>. </p>
+                            <p> <a href="viewmartenitybook.php">View Appointment record</a>. </p>
                         </div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ if (isset($_SESSION['patientid'])) {
                                 <h4>Appointment taken successfully</h4>
                             </div>
                             <p>Appointment record is in pending process. Please wait for confirmation message.</p>
-                            <p> <a href="patientlogin.php">Click here to Login</a>. </p>
+                            <p> <a href="martenitylogin.php">Click here to Login</a>. </p>
                         </div>
                     </div>
                 </div>
@@ -93,8 +93,6 @@ if (isset($_SESSION['patientid'])) {
         ?>
             <!-- Content -->
             <div id="content">
-
-
 
                 <!-- Make an Appointment -->
                 <section class="main-oppoiment ">
@@ -114,32 +112,25 @@ if (isset($_SESSION['patientid'])) {
                                         <ul class="row">
                                             <li class="col-sm-6">
                                                 <label>
-
-
-                                                    <input placeholder="Patient Name" type="text" class="form-control" name="patiente" id="patiente" value="<?php echo $rspatient['patientname'];  ?>" <?php echo $readonly; ?>>
+                                                    <input placeholder="Patient Name" type="text" class="form-control" name="patiente" id="patiente" value="<?php echo $rspatient['martenityname'];  ?>" <?php echo $readonly; ?>>
                                                     <i class="icon-user"></i>
                                                 </label>
-
                                             </li>
-
                                             <li class="col-sm-6">
                                                 <label><input placeholder="Address" type="text" class="form-control" name="textarea" id="textarea" value="<?php echo $rspatient['address'];  ?>" <?php echo $readonly; ?>><i class="icon-compass"></i>
                                                 </label>
-
                                             </li>
                                             <li class="col-sm-6">
                                                 <label><input placeholder="City" type="text" class="form-control" name="city" id="city" value="<?php echo $rspatient['city'];  ?>" <?php echo $readonly; ?>><i class="icon-pin"></i>
                                                 </label>
-
                                             </li>
                                             <li class="col-sm-6">
                                                 <label>
                                                     <input placeholder="Mobile Number" type="text" class="form-control" name="mobileno" id="mobileno" value="<?php echo $rspatient['mobileno'];  ?>" <?php echo $readonly; ?>><i class="icon-phone"></i>
                                                 </label>
-
                                             </li>
                                             <?php
-                                            if (!isset($_SESSION['patientid'])) {
+                                            if (!isset($_SESSION['martenityid'])) {
                                             ?>
                                                 <li class="col-sm-6">
                                                     <label>
@@ -161,7 +152,7 @@ if (isset($_SESSION['patientid'])) {
                                                 <label>
 
                                                     <?php
-                                                    if (isset($_SESSION['patientid'])) {
+                                                    if (isset($_SESSION['martenityid'])) {
                                                         echo $rspatient['gender'];
                                                     } else {
                                                     ?>
@@ -189,7 +180,7 @@ if (isset($_SESSION['patientid'])) {
                                             </li>
                                             <li class="col-sm-6">
                                                 <label>
-                                                    <input placeholder="Appointment date" type="text" class="form-control" min="<?php echo date("Y-m-d"); ?>" name="appointmentdate" onfocus="(this.type='date')" id="appointmentdate"><i class="ion-calendar"></i>
+                                                    <input placeholder="Expecting date" type="text" class="form-control" min="<?php echo date("Y-m-d"); ?>" name="appointmentdate" onfocus="(this.type='date')" id="appointmentdate"><i class="ion-calendar"></i>
                                                 </label>
 
                                             </li>
@@ -202,7 +193,7 @@ if (isset($_SESSION['patientid'])) {
                                             <li class="col-sm-6">
                                                 <label>
 
-                                                    <select name="branchid" class="selectpicker" id="branchid">
+                                                    <select name="branch" class="selectpicker" id="branch">
                                                         <option value="">Select branch</option>
                                                         <?php
                                                         $sqldept = "SELECT * FROM branch WHERE status='Active'";
@@ -217,8 +208,9 @@ if (isset($_SESSION['patientid'])) {
                                             </li>
                                             <li class="col-sm-6">
                                                 <label>
+
                                                     <select name="serviceid" class="selectpicker" id="serviceid">
-                                                        <option value="">Select service</option>
+                                                        <option value="">Select Service</option>
                                                         <?php
                                                         $sqldept = "SELECT * FROM offeredservice WHERE status='Active'";
                                                         $qsqldept = mysqli_query($con, $sqldept);
@@ -227,19 +219,27 @@ if (isset($_SESSION['patientid'])) {
                                                         }
                                                         ?>
                                                     </select>
-                                                    <i class="ion-medkit"></i>
-
+                                                    <i class="ion-university"></i>
                                                 </label>
-
                                             </li>
-                                            <li class="col-sm-12">
+					                        <li class="col-sm-6">
                                                 <label>
-                                                    <textarea class="form-control" name="app_reason" placeholder="Appointment reason"></textarea>
+
+                                                    <select name="pay" class="selectpicker" id="pay">
+                                                        <option value="">Select Option</option>
+                                                        <?php
+                                                        $sqldept = "SELECT * FROM payopt WHERE status='Active'";
+                                                        $qsqldept = mysqli_query($con, $sqldept);
+                                                        while ($rsdept = mysqli_fetch_array($qsqldept)) {
+                                                            echo "<option value='$rsdept[payid]'>$rsdept[payname]</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                    <i class="ion-university"></i>
                                                 </label>
                                             </li>
                                             <li class="col-sm-12">
-                                                <button type="submit" class="btn" name="submit" id="submit">make an
-                                                    appointment</button>
+                                                <button type="submit" class="btn" name="submit" id="submit">Make an appointment</button>
                                             </li>
                                     </form>
                                 </div>

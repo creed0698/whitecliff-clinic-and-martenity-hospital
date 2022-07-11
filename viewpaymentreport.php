@@ -51,7 +51,7 @@ if (isset($_GET['delid'])) {
 						$billamt = $billamt +  $rs['bill_amount'];
 					}
 					?>
-					&nbsp;₱ <?php echo $billamt; ?></td>
+					&nbsp;$ <?php echo $billamt; ?></td>
 			</tr>
 			<tr>
 				<th width="442" scope="col">
@@ -72,7 +72,7 @@ if (isset($_GET['delid'])) {
 				<th scope="col">
 					<div align="right">Discount &nbsp; </div>
 				</th>
-				<td>&nbsp;₱ <?php echo $rsbilling_records['discount']; ?></td>
+				<td>&nbsp;$ <?php echo $rsbilling_records['discount']; ?></td>
 			</tr>
 
 			<tr>
@@ -80,13 +80,13 @@ if (isset($_GET['delid'])) {
 				<th scope="col">
 					<div align="right">Grand Total &nbsp; </div>
 				</th>
-				<td>&nbsp;₱ <?php echo $grandtotal = ($billamt + $taxamt)  - $rsbilling_records['discount']; ?></td>
+				<td>&nbsp;$ <?php echo $grandtotal = ($billamt + $taxamt)  - $rsbilling_records['discount']; ?></td>
 			</tr>
 			<tr>
 				<th scope="col">
 					<div align="right">Paid Amount </div>
 				</th>
-				<td>₱ <?php
+				<td>$ <?php
 						$sqlpayment = "SELECT sum(paidamount) FROM payment where appointmentid='$billappointmentid'";
 						$qsqlpayment = mysqli_query($con, $sqlpayment);
 						$rspayment = mysqli_fetch_array($qsqlpayment);
@@ -97,7 +97,7 @@ if (isset($_GET['delid'])) {
 				<th scope="col">
 					<div align="right">Balance Amount</div>
 				</th>
-				<td>₱ <?php echo $balanceamt = $grandtotal - $rspayment[0]; ?></td>
+				<td>$ <?php echo $balanceamt = $grandtotal - $rspayment[0]; ?></td>
 			</tr>
 		</tbody>
 	</table>
@@ -122,7 +122,7 @@ if (isset($_GET['delid'])) {
 					<tr>
 						<td>&nbsp;<?php echo $rspayment['paiddate']; ?></td>
 						<td>&nbsp;<?php echo $rspayment['paidtime']; ?></td>
-						<td>&nbsp;₱ <?php echo $rspayment['paidamount']; ?></td>
+						<td>&nbsp;$ <?php echo $rspayment['paidamount']; ?></td>
 					</tr>
 				<?php
 				}

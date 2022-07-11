@@ -74,7 +74,7 @@ $tim = date("H:i:s");
                 <div class="menu">
                     <ul class="list">
                         <li class="header">MAIN NAVIGATION</li>
-                        <li class="active open"><a href="adminaccount.php"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a></li>
+                        <li class="active open"><a href="adminaccount.php"><i class="zmdi zmdi-home"></i><span>DASHBOARD</span></a></li>
 
 
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-calendar-check"></i><span>Profile</span> </a>
@@ -88,10 +88,13 @@ $tim = date("H:i:s");
 
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-calendar-check"></i><span>APPOINTMENT</span> </a>
                             <ul class="ml-menu">
-                                <li><a href="appointment.php">New Appointment</a></li>
-                                <li><a href="viewappointmentpending.php">View Pending Appointments</a>
-                                </li>
+                                <li><a href="appointment.php">Patient Appointment</a></li>
+                                <li><a href="viewappointmentpending.php">View Pending Appointments</a></li>
                                 <li><a href="viewappointmentapproved.php">View Approved Appointments</a></li>
+                                <li><a href="martenityappoint.php">Martenity Appointment</a></li>
+                                <li><a href="viewmartenityappending.php">Martenity Pending Appointments</a></li>
+                                <li><a href="viewmartenityapapproved.php">Martenity Approved Appointments</a></li>
+
                             </ul>
                         </li>
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>DOCTORS</span> </a>
@@ -106,6 +109,12 @@ $tim = date("H:i:s");
                             <ul class="ml-menu">
                                 <li><a href="patient.php">Add Patient</a></li>
                                 <li><a href="viewpatient.php">View Patient Records</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>MARTENITY</span> </a>
+                            <ul class="ml-menu">
+                                <li><a href="martenity.php">Add Patient</a></li>
+                                <li><a href="viewmartenity.php">View Patient Records</a></li>
                             </ul>
                         </li>
 
@@ -144,9 +153,10 @@ $tim = date("H:i:s");
 
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-calendar-check"></i><span>APPOINTMENT</span> </a>
                             <ul class="ml-menu">
-                                <li><a href="viewappointmentpending.php" style="width:250px;">View Pending Appointments</a>
-                                </li>
-                                <li><a href="viewappointmentapproved.php" style="width:250px;">View Approved Appointments</a></li>
+                                <li><a href="viewappointmentpending.php" style="width:250px;">Pending Appointments</a></li>
+                                <li><a href="viewappointmentapproved.php" style="width:250px;">Approved Patients</a></li>
+                                <li><a href="viewmartenityappending.php" style="width:250px;">Pending Martenity</a></li>
+                                <li><a href="viewmartenityapapproved.php" style="width:250px;">Approved Martenity</a></li>
                             </ul>
                         </li>
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>DOCTORS</span> </a>
@@ -159,6 +169,12 @@ $tim = date("H:i:s");
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>PATIENTS</span> </a>
                             <ul class="ml-menu">
                                 <li><a href="viewpatient.php">View Patient</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>MARTENITY</span> </a>
+                            <ul class="ml-menu">
+                                <li><a href="viewmartenity.php">View Patient</a>
                                 </li>
                             </ul>
                         </li>
@@ -198,8 +214,42 @@ $tim = date("H:i:s");
 
             <?php }; ?>
             <!-- patient Menu -->
+
+
+
+                <!-- martenity Menu -->
+            <?php
+            if (isset($_SESSION['martenityid'])) {
+            ?>
+                <div class="menu">
+                    <ul class="list">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li class="active open"><a href="martenityaccount.php"><i class="zmdi zmdi-home"></i><span>DASHBOARD</span></a></li>
+
+
+                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-calendar-check"></i><span>PROFILE</span> </a>
+                            <ul class="ml-menu">
+                                <li><a href="martenityprofile.php">View Profile</a></li>
+                                <li><a href="martenitychangepass.php">Change Password</a></li>
+                                <li><a href="martenitymanage.php">File Manager</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-calendar-check"></i><span>APPOINTMENT</span> </a>
+                            <ul class="ml-menu">
+                                <li><a href="martenityappoint.php">Add Appointment</a></li>
+                                <li><a href="viewmartenitybook.php">View Appointments</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            <?php }; ?>
+            <!-- martenity Menu -->
+
         </aside>
         <!-- #END# Left Sidebar -->
 
     </section>
-    <section class="content home">
+    <section class="content home">   
+</body>

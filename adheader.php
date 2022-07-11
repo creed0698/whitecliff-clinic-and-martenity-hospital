@@ -11,7 +11,7 @@ $tim = date("H:i:s");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title></title>
+    <title>WCMH</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
@@ -53,12 +53,12 @@ $tim = date("H:i:s");
     <nav class="navbar clearHeader">
         <div class="col-12">
             <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand"
-                    href="#">Whiteliff Clinic and Maternity Hospital</a> </div>
+                    href="#">Whitecliff Clinic and Martenity Hospital</a> </div>
             <ul class="nav navbar-nav navbar-right">
                 <!-- Notifications -->
                 <li>
-                    <a data-placement="bottom" title="Full Screen" href="logout.php">
-                    <i class="zmdi zmdi-sign-in"></i></a>
+                    <a data-placement="bottom" title="Full Screen" href="logout.php"><i
+                            class="zmdi zmdi-sign-in"></i></a>
                 </li>               
 
             </ul>
@@ -96,7 +96,8 @@ $tim = date("H:i:s");
                             <li><a href="appointment.php">New Appointment</a></li>
                             <li><a href="viewappointmentpending.php">View Pending Appointments</a>
                             </li>
-                            <li><a href="viewappointmentapproved.php">View Approved Appointments</a></li>
+                            <li><a href="viewappointmentapproved.php">View Approved
+                                    Appointments</a></li>
                         </ul>
                     </li>
                     <li><a href="javascript:void(0);" class="menu-toggle"><i
@@ -115,17 +116,30 @@ $tim = date("H:i:s");
                             <li><a href="viewpatient.php">View Patient Records</a></li>
                         </ul>
                     </li>
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i
+                                class="zmdi zmdi-account-o"></i><span>MARTENITY</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="martenity.php">Add Martenity</a></li>
+                            <li><a href="viewmartenity.php">View Martenity Records</a></li>
+                        </ul>
+                    </li>
 
 
-                    <li> <a href="javascript:void(0);" class="menu-toggle toggled waves-effect waves-block">
-                        <i class="zmdi zmdi-copy"></i><span>SERVICES</span> </a>
+                    <li> <a href="javascript:void(0);" class="menu-toggle toggled waves-effect waves-block"><i
+                                class="zmdi zmdi-copy"></i><span>SERVICE</span> </a>
                         <ul class="ml-menu" style="display: block;">
                             <li><a href="branch.php" class=" waves-effect waves-block">Add Branch</a></li>
                             <li><a href="viewbranch.php" class=" waves-effect waves-block">View Branch</a></li>
-                            <li><a href="offeredservices.php" class=" waves-effect waves-block">Add Service</a></li>
-                            <li><a href="viewofferedservices.php" class=" waves-effect waves-block">View Service</a></li>
+                            <li><a href="offeredservices.php" class=" waves-effect waves-block">Add Services</a></li>
+                            <li><a href="viewofferedservices.php" class=" waves-effect waves-block">View Services</a></li>  
+                            <li><a href="treatment.php" class=" waves-effect waves-block">Add Treatment type</a></li>
+                            <li><a href="viewtreatment.php" class=" waves-effect waves-block">View Treatment types</a></li>
+                            <li><a href="medicine.php" class=" waves-effect waves-block">Add Medicine</a></li>
+                            <li><a href="viewmedicine.php" class=" waves-effect waves-block">View Medicine</a></li>
                         </ul>
-                    </li> 
+                    </li>
+
+                    
                 </li>
 
                 </ul>
@@ -159,7 +173,8 @@ $tim = date("H:i:s");
                         <ul class="ml-menu">
                             <li><a href="viewappointmentpending.php" style="width:250px;">View Pending Appointments</a>
                             </li>
-                            <li><a href="viewappointmentapproved.php" style="width:250px;">View Approved Appointments</a></li>
+                            <li><a href="viewappointmentapproved.php" style="width:250px;">View Approved
+                                    Appointments</a></li>
                         </ul>
                     </li>
                     <li><a href="javascript:void(0);" class="menu-toggle"><i
@@ -175,6 +190,24 @@ $tim = date("H:i:s");
                         <ul class="ml-menu">
                             <li><a href="viewpatient.php">View Patient</a>
                             </li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i
+                                class="zmdi zmdi-account-o"></i><span>MARTENITY</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="viewmartenity.php">View Martenity</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li> <a href="viewdoctorconsultancycharge.php"><i class="zmdi zmdi-copy"></i><span>INCOME REPORT</span> </a></li>
+
+
+                    <li> <a href="javascript:void(0);" class="menu-toggle"><i
+                                class="zmdi zmdi-copy"></i><span>SERVICE</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="viewtreatment.php">View Treatment</a></li>
+                            <li><a href="viewtreatmentrecord.php">View Treatment Records</a></li>
                         </ul>
                     </li>
 
@@ -195,29 +228,75 @@ $tim = date("H:i:s");
             <div class="menu">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li class="active open"><a href="patientaccount.php">
-                        <i class="zmdi zmdi-home"></i><span>DASHBOARD</span></a>
-                    </li>
-                    <li><a href="javascript:void(0);" class="menu-toggle">
-                        <i class="zmdi zmdi-calendar-check"></i><span>PROFILE</span> </a>
+                    <li class="active open"><a href="patientaccount.php"><i
+                                class="zmdi zmdi-home"></i><span>DASHBOARD</span></a></li>
+
+
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i
+                                class="zmdi zmdi-calendar-check"></i><span>PROFILE</span> </a>
                         <ul class="ml-menu">
-                            <li><a href="patientprofile.php">View Profile</a>
-                            </li>
+                            <li><a href="patientprofile.php">View Profile</a></li>
                             <li><a href="patientchangepassword.php">Change Password</a></li>
                         </ul>
                     </li>
-                    <li><a href="javascript:void(0);" class="menu-toggle">
-                        <i class="zmdi zmdi-calendar-check"></i><span>APPOINTMENT</span> </a>
+
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i
+                                class="zmdi zmdi-calendar-check"></i><span>APPOINTMENTS</span> </a>
                         <ul class="ml-menu">
                             <li><a href="patientappointment.php" >Add Appointment</a></li>
                             <li><a href="viewappointment.php" >View Appointments</a></li>
                         </ul>
                     </li>
                 </ul>
+                </li>
+
+
+                </ul>
             </div>
 
             <?php }; ?>
             <!-- patient Menu -->
+
+
+
+
+            <!-- martenity Menu -->
+            <?php
+            if(isset($_SESSION['martenityid']))
+            {
+            ?>
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="active open"><a href="martenityaccount.php"><i
+                                class="zmdi zmdi-home"></i><span>DASHBOARD</span></a></li>
+
+
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i
+                                class="zmdi zmdi-calendar-check"></i><span>PROFILE</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="martenityprofile.php">View Profile</a></li>
+                            <li><a href="martenitychangepass.php">Change Password</a></li>
+                            <li><a href="martenitymanage.php">File Manage</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="javascript:void(0);" class="menu-toggle"><i
+                                class="zmdi zmdi-calendar-check"></i><span>APPOINTMENTS</span> </a>
+                        <ul class="ml-menu">
+                            <li><a href="martenityappoint.php" >Add Appointment</a></li>
+                            <li><a href="viewmartenitybook.php" >View Appointments</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                </li>
+
+
+                </ul>
+            </div>
+
+            <?php }; ?>
+            <!-- martenity Menu -->
         </aside>
         <!-- #END# Left Sidebar -->
      

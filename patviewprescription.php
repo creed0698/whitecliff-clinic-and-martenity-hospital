@@ -64,7 +64,7 @@ if (isset($_GET['delid'])) {
         <table class="table table-hover table-bordered table-striped">
           <thead>
             <tr>
-              <td>Service</td>
+              <td>Medicine Name</td>
               <td>Cost</td>
               <td>Unit</td>
               <td>Dosage</td>
@@ -73,11 +73,11 @@ if (isset($_GET['delid'])) {
           <tbody>
 
             <?php
-            $sqlprescription_records = "SELECT * FROM prescription_records LEFT JOIN offeredservice ON prescription_records.medicine_name=offeredservice.serviceid WHERE prescription_records.prescription_id='$rs[0]'";
+            $sqlprescription_records = "SELECT * FROM prescription_records LEFT JOIN offeredservice ON prescription_records.medicine_name=medicine.medicineid WHERE prescription_records.prescription_id='$rs[0]'";
             $qsqlprescription_records = mysqli_query($con, $sqlprescription_records);
             while ($rsprescription_records = mysqli_fetch_array($qsqlprescription_records)) {
               echo "<tr>
-              <td>&nbsp;$rsprescription_records[servicename]</td>
+              <td>&nbsp;$rsprescription_records[medicinename]</td>
               <td>&nbsp;$rsprescription_records[cost]</td>
               <td>&nbsp;$rsprescription_records[unit]</td>
               <td>&nbsp;$rsprescription_records[dosage]</td>

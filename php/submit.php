@@ -1,8 +1,10 @@
 <?php
-
+session_start();
+error_reporting(0);
+include("dbconnection.php");
 
 	// specify your email here
-	$to = 'adnanarf@gmail.com';
+	$to = 'priscakanyenze@gmail.com';
 
 
 

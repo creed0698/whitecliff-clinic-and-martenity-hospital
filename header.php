@@ -60,13 +60,19 @@ $tim = date("H:i:s");
           <ul class="nav">
             <li> <a href="index.php">HOME </a></li>
             <li><a href="about.php">ABOUT</a></li>
-            <li><a href="patientappointment.php">APPOINTMENT </a></li>
+            <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">APPOINTMENT </a>
+              <ul class="dropdown-menu multi-level" style="display: none;">
+                <li><a href="patientappointment.php">Patient Booking</a></li>
+                <li><a href="martenitybook.php">Maternity Booking</a></li>
+              </ul>
+            </li>
             <li><a href="contact.php">CONTACT </a></li>
             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">LOGIN </a>
               <ul class="dropdown-menu multi-level" style="display: none;">
                 <li><a href="adminlogin.php">Admin</a></li>
                 <li><a href="doctorlogin.php">Doctor</a></li>
-                <li><a href="patientlogin.php">Patient </a></li>
+                <li><a href="patientlogin.php">Patient</a></li>
+                <li><a href="martenitylogin.php">Martenity</a></li>
               </ul>
             </li>
           </ul>

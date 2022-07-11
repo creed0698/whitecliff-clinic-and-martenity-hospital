@@ -1,4 +1,6 @@
 <?php
+session_start();
+error_reporting(0);
 include("header.php");
 include("dbconnection.php");
 if (isset($_POST['submit'])) {
