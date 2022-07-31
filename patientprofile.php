@@ -21,6 +21,7 @@ if (isset($_SESSION['patientid'])) {
 <div class="container-fluid">
 	<div class="block-header">
 		<h2>Patient Profile</h2>
+		<h3>For Payment contact: 0777775826</h3>
 	</div>
 	<div class="row clearfix">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
