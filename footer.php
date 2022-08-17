@@ -29,7 +29,7 @@
   <div class="rights style-2">
     <div class="container">
       <p>© 2022 Whiteliff Clinic and Maternity Hospital | Developed By:
-        <strong><span></span><a href="" style="color: white">creedsoft</a></span></strong>
+        <strong><span></span><a href="" style="color: white">creedsoft | Elton Chipuka</a></span></strong>
       </p>
     </div>
   </div>

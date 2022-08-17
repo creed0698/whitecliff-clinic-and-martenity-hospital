@@ -35,7 +35,7 @@ if (isset($_GET['editid'])) {
 
 <div class="container-fluid">
     <div class="block-header">
-        <h2>Martenity Patient Registration Panel</h2>
+        <h2>Maternity Patient Registration Panel</h2>
     </div>
     <div class="card">
         <form method="post" action="" name="frmpatient" onSubmit="return validateform()" style="padding: 10px">

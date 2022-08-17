@@ -91,9 +91,9 @@ $tim = date("H:i:s");
                                 <li><a href="appointment.php">Patient Appointment</a></li>
                                 <li><a href="viewappointmentpending.php">View Pending Appointments</a></li>
                                 <li><a href="viewappointmentapproved.php">View Approved Appointments</a></li>
-                                <li><a href="martenityappoint.php">Martenity Appointment</a></li>
-                                <li><a href="viewmartenityappending.php">Martenity Pending Appointments</a></li>
-                                <li><a href="viewmartenityapapproved.php">Martenity Approved Appointments</a></li>
+                                <li><a href="martenityappoint.php">Maternity Appointment</a></li>
+                                <li><a href="viewmartenityappending.php">Marternity Pending Appointments</a></li>
+                                <li><a href="viewmartenityapapproved.php">Maternity Approved Appointments</a></li>
 
                             </ul>
                         </li>
@@ -155,8 +155,8 @@ $tim = date("H:i:s");
                             <ul class="ml-menu">
                                 <li><a href="viewappointmentpending.php" style="width:250px;">Pending Appointments</a></li>
                                 <li><a href="viewappointmentapproved.php" style="width:250px;">Approved Patients</a></li>
-                                <li><a href="viewmartenityappending.php" style="width:250px;">Pending Martenity</a></li>
-                                <li><a href="viewmartenityapapproved.php" style="width:250px;">Approved Martenity</a></li>
+                                <li><a href="viewmartenityappending.php" style="width:250px;">Pending Maternity</a></li>
+                                <li><a href="viewmartenityapapproved.php" style="width:250px;">Approved Maternity</a></li>
                             </ul>
                         </li>
                         <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-add"></i><span>DOCTORS</span> </a>
@@ -172,7 +172,7 @@ $tim = date("H:i:s");
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>MARTENITY</span> </a>
+                        <li><a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-account-o"></i><span>MATERNITY</span> </a>
                             <ul class="ml-menu">
                                 <li><a href="viewmartenity.php">View Patient</a>
                                 </li>

@@ -53,7 +53,7 @@ $tim = date("H:i:s");
     <nav class="navbar clearHeader">
         <div class="col-12">
             <div class="navbar-header"> <a href="javascript:void(0);" class="bars"></a> <a class="navbar-brand"
-                    href="#">Whitecliff Clinic and Martenity Hospital</a> </div>
+                    href="#">Whitecliff Clinic and Maternity Hospital</a> </div>
             <ul class="nav navbar-nav navbar-right">
                 <!-- Notifications -->
                 <li>
@@ -117,10 +117,10 @@ $tim = date("H:i:s");
                         </ul>
                     </li>
                     <li><a href="javascript:void(0);" class="menu-toggle"><i
-                                class="zmdi zmdi-account-o"></i><span>MARTENITY</span> </a>
+                                class="zmdi zmdi-account-o"></i><span>MATERNITY</span> </a>
                         <ul class="ml-menu">
-                            <li><a href="martenity.php">Add Martenity</a></li>
-                            <li><a href="viewmartenity.php">View Martenity Records</a></li>
+                            <li><a href="martenity.php">Add Maternity</a></li>
+                            <li><a href="viewmartenity.php">View Maternity Records</a></li>
                         </ul>
                     </li>
 
@@ -193,9 +193,9 @@ $tim = date("H:i:s");
                         </ul>
                     </li>
                     <li><a href="javascript:void(0);" class="menu-toggle"><i
-                                class="zmdi zmdi-account-o"></i><span>MARTENITY</span> </a>
+                                class="zmdi zmdi-account-o"></i><span>MATERNITY</span> </a>
                         <ul class="ml-menu">
-                            <li><a href="viewmartenity.php">View Martenity</a>
+                            <li><a href="viewmartenity.php">View Maternity</a>
                             </li>
                         </ul>
                     </li>
@@ -284,7 +284,7 @@ $tim = date("H:i:s");
                     <li><a href="javascript:void(0);" class="menu-toggle"><i
                                 class="zmdi zmdi-calendar-check"></i><span>APPOINTMENTS</span> </a>
                         <ul class="ml-menu">
-                            <li><a href="martenityappoint.php" >Add Appointment</a></li>
+                            <li><a href="martenitybook.php" >Add Appointment</a></li>
                             <li><a href="viewmartenitybook.php" >View Appointments</a></li>
                         </ul>
                     </li>

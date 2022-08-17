@@ -25,7 +25,7 @@ $tim = date("H:i:s");
                       max-width: auto; 
                       max-height: auto; 
                       white-space: nowrap;">
-            Whiteliff Clinic and Maternity Hospital
+            Whitecliff Clinic and Maternity Hospital
           </div>
 
           <!-- LAYER NR. 2 -->
@@ -144,7 +144,7 @@ $tim = date("H:i:s");
             <article>
               <div class="media-left"> <i class="flaticon-eye-2 icon"></i> </div>
               <div class="media-body">
-                <h6>Martenity Booking</h6>
+                <h6>Maternity Booking</h6>
                 <p>It is the cornerstone of maternal and neonatal care, with numerous advantages for 
                   both the mother and the baby. </p>
               </div>

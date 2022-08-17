@@ -13,7 +13,7 @@ $tim = date("H:i:s");
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="author" content="M_Adnan" />
   <!-- Document Title -->
-  <title>Whiteliff Clinic and Maternity Hospital</title>
+  <title>Whitecliff Clinic and Maternity Hospital</title>
 
   <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
   <link rel="stylesheet" type="text/css" href="rs-plugin/css/settings.css" media="screen" />
@@ -72,7 +72,7 @@ $tim = date("H:i:s");
                 <li><a href="adminlogin.php">Admin</a></li>
                 <li><a href="doctorlogin.php">Doctor</a></li>
                 <li><a href="patientlogin.php">Patient</a></li>
-                <li><a href="martenitylogin.php">Martenity</a></li>
+                <li><a href="martenitylogin.php">Maternity</a></li>
               </ul>
             </li>
           </ul>

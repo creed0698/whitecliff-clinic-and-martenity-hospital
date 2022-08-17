@@ -36,7 +36,7 @@ if (isset($_GET['editid'])) {
 }
 ?>
 <div class="card ">
-	<h2>Appointment record Approval Process</h2>
+	<h2>Appointment Record Approval Process</h2>
 	<form method="post" action="" name="frmappnt" onSubmit="return validateform()">
 		<table class="table table-striped">
 			<tr>
