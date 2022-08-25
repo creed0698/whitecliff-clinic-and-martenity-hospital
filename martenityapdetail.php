@@ -3,32 +3,34 @@ session_start();
 error_reporting(0);
 include("dbconnection.php");
 if (isset($_POST['submitapp'])) {
-	$sql = "INSERT INTO martenityap(branchid,appointmentdate,appointmenttime,serviceid,payid) values('$_POST[select3]','$_POST[date]','$_POST[time]','$_POST[select5]','$_POST[select6]')";
+	$sql = "INSERT INTO maternityap(branchid,appointmentdate,appointmenttime,serviceid,payid) values('$_POST[select3]','$_POST[date]','$_POST[time]','$_POST[select5]','$_POST[select6]')";
 	if ($qsql = mysqli_query($con, $sql)) {
 		echo "<script>alert('appointment record inserted successfully...');</script>";
-	} else {
+	}
+	else {
 		echo mysqli_error($con);
 	}
 }
 
 if (isset($_GET['editid'])) {
-	$sql = "SELECT * FROM martenityap WHERE martenityappointid='$_GET[editid]' ";
+	$sql = "SELECT * FROM maternityap WHERE maternityappointid='$_GET[editid]' ";
 	$qsql = mysqli_query($con, $sql);
 	$rsedit = mysqli_fetch_array($qsql);
 }
 
-$sqlappointment1 = "SELECT max(martenityappointid) FROM martenityap where martenityid='$_GET[martenityid]' AND (status='Active' OR status='Approved')";
+$sqlappointment1 = "SELECT max(maternityappointid) FROM maternityap where maternityid='$_GET[maternityid]' AND (status='Active' OR status='Approved')";
 $qsqlappointment1 = mysqli_query($con, $sqlappointment1);
 $rsappointment1 = mysqli_fetch_array($qsqlappointment1);
 
-$sqlappointment = "SELECT * FROM martenityap where martenityappointid='$rsappointment1[0]'";
+$sqlappointment = "SELECT * FROM maternityap where maternityappointid='$rsappointment1[0]'";
 $qsqlappointment = mysqli_query($con, $sqlappointment);
 $rsappointment = mysqli_fetch_array($qsqlappointment);
 
 if (mysqli_num_rows($qsqlappointment) == 0) {
 	echo "<center><h2>No Appointment records found..</h2></center>";
-} else {
-	$sqlappointment = "SELECT * FROM martenityap where martenityappointid='$rsappointment1[0]'";
+}
+else {
+	$sqlappointment = "SELECT * FROM maternityap where maternityappointid='$rsappointment1[0]'";
 	$qsqlappointment = mysqli_query($con, $sqlappointment);
 	$rsappointment = mysqli_fetch_array($qsqlappointment);
 

@@ -5,29 +5,33 @@ include("adformheader.php");
 include("dbconnection.php");
 if (isset($_POST['submit'])) {
     if (isset($_GET['editid'])) {
-        $sql = "UPDATE martenity SET martenityname='$_POST[martenityname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',password='$_POST[password]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]',status='$_POST[select]' WHERE martenityid='$_GET[editid]'";
+        $sql = "UPDATE maternity SET maternityname='$_POST[maternityname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',password='$_POST[password]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]',status='$_POST[select]' WHERE maternityid='$_GET[editid]'";
         if ($qsql = mysqli_query($con, $sql)) {
             echo "<script>alert('patient record updated successfully...');</script>";
-        } else {
+        }
+        else {
             echo mysqli_error($con);
         }
-    } else {
-        $sql = "INSERT INTO martenity(martenityname,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[martenityname]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
+    }
+    else {
+        $sql = "INSERT INTO maternity(maternityname,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[maternityname]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
         if ($qsql = mysqli_query($con, $sql)) {
             echo "<script>alert('patients record inserted successfully...');</script>";
             $insid = mysqli_insert_id($con);
             if (isset($_SESSION['adminid'])) {
                 echo "<script>window.location='martenityappoint.php?patid=$insid';</script>";
-            } else {
+            }
+            else {
                 echo "<script>window.location='martenitylogin.php';</script>";
             }
-        } else {
+        }
+        else {
             echo mysqli_error($con);
         }
     }
 }
 if (isset($_GET['editid'])) {
-    $sql = "SELECT * FROM martenity WHERE martenityid='$_GET[editid]' ";
+    $sql = "SELECT * FROM maternity WHERE maternityid='$_GET[editid]' ";
     $qsql = mysqli_query($con, $sql);
     $rsedit = mysqli_fetch_array($qsql);
 }
@@ -41,13 +45,13 @@ if (isset($_GET['editid'])) {
         <form method="post" action="" name="frmpatient" onSubmit="return validateform()" style="padding: 10px">
             <div class="form-group"><label>Patient Name</label>
                 <div class="form-line">
-                    <input class="form-control" type="text" name="martenityname" id="patientname" value="<?php echo $rsedit['martenityname']; ?>" />
+                    <input class="form-control" type="text" name="maternityname" id="patientname" value="<?php echo $rsedit['maternityname']; ?>" />
                 </div>
             </div>
 
             <?php
-            if (isset($_GET['editid'])) {
-            ?>
+if (isset($_GET['editid'])) {
+?>
                 <div class="form-group"><label>Admission Date</label>
                     <div class="form-line">
                         <input class="form-control" type="date" name="admissiondate" id="admissiondate" value="<?php echo $rsedit['admissiondate']; ?>" readonly />
@@ -60,8 +64,8 @@ if (isset($_GET['editid'])) {
                 </div>
 
             <?php
-            }
-            ?>
+}
+?>
             <div class="form-group">
                 <label>Address</label>
                 <div class="form-line">
@@ -102,15 +106,16 @@ if (isset($_GET['editid'])) {
                 <div class="form-line"><select class="form-control show-tick" name="select2" id="select2">
                         <option value="">Select</option>
                         <?php
-                        $arr = array("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-");
-                        foreach ($arr as $val) {
-                            if ($val == $rsedit['bloodgroup']) {
-                                echo "<option value='$val' selected>$val</option>";
-                            } else {
-                                echo "<option value='$val'>$val</option>";
-                            }
-                        }
-                        ?>
+$arr = array("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-");
+foreach ($arr as $val) {
+    if ($val == $rsedit['bloodgroup']) {
+        echo "<option value='$val' selected>$val</option>";
+    }
+    else {
+        echo "<option value='$val'>$val</option>";
+    }
+}
+?>
                     </select>
                 </div>
             </div>
@@ -118,15 +123,16 @@ if (isset($_GET['editid'])) {
                 <div class="form-line"><select class="form-control show-tick" name="select3" id="select3">
                         <option value="">Select</option>
                         <?php
-                        $arr = array("MALE", "FEMALE");
-                        foreach ($arr as $val) {
-                            if ($val == $rsedit['gender']) {
-                                echo "<option value='$val' selected>$val</option>";
-                            } else {
-                                echo "<option value='$val'>$val</option>";
-                            }
-                        }
-                        ?>
+$arr = array("MALE", "FEMALE");
+foreach ($arr as $val) {
+    if ($val == $rsedit['gender']) {
+        echo "<option value='$val' selected>$val</option>";
+    }
+    else {
+        echo "<option value='$val'>$val</option>";
+    }
+}
+?>
                     </select>
                 </div>
             </div>

@@ -4,7 +4,7 @@ error_reporting(0);
 include("adformheader.php");
 include("dbconnection.php");
 if (isset($_GET['delid'])) {
-  $sql = "DELETE FROM martenity WHERE martenityid='$_GET[delid]'";
+  $sql = "DELETE FROM maternity WHERE maternityid='$_GET[delid]'";
   $qsql = mysqli_query($con, $sql);
   if (mysqli_affected_rows($con) == 1) {
     echo "<script>alert('patient record deleted successfully..');</script>";
@@ -43,11 +43,11 @@ if (isset($_GET['delid'])) {
         </thead>
         <tbody>
           <?php
-          $sql = "SELECT * FROM martenity";
-          $qsql = mysqli_query($con, $sql);
-          while ($rs = mysqli_fetch_array($qsql)) {
-            echo "<tr>
-        <td>$rs[martenityname]<br>
+$sql = "SELECT * FROM maternity";
+$qsql = mysqli_query($con, $sql);
+while ($rs = mysqli_fetch_array($qsql)) {
+  echo "<tr>
+        <td>$rs[maternityname]<br>
         <strong>Login ID :</strong> $rs[loginid] </td>
         <td>
         <strong>Date</strong>: &nbsp;$rs[admissiondate]<br>
@@ -58,14 +58,14 @@ if (isset($_GET['delid'])) {
         <strong>Gender</strong> - &nbsp;$rs[gender]<br>
         <strong>DOB</strong> - &nbsp;$rs[dob]</td>
         <td align='center'>Status - $rs[status] <br>";
-            if (isset($_SESSION['adminid'])) {
-              echo "<a href='martenity.php?editid=$rs[martenityid]' class='btn btn-sm btn-raised g-bg-cyan'>Edit</a>
-              <a href='viewmartenity.php?delid=$rs[martenityid]' class='btn btn-sm btn-raised g-bg-blush2'>Delete</a> <hr>
-          <a href='martenityreport.php?martenityid=$rs[martenityid]' class='btn btn-sm btn-raised'>View Report</a>";
-            }
-            echo "</td></tr>";
-          }
-          ?>
+  if (isset($_SESSION['adminid'])) {
+    echo "<a href='martenity.php?editid=$rs[maternityid]' class='btn btn-sm btn-raised g-bg-cyan'>Edit</a>
+              <a href='viewmartenity.php?delid=$rs[maternityid]' class='btn btn-sm btn-raised g-bg-blush2'>Delete</a> <hr>
+          <a href='martenityreport.php?maternityid=$rs[maternityid]' class='btn btn-sm btn-raised'>View Report</a>";
+  }
+  echo "</td></tr>";
+}
+?>
         </tbody>
       </table>
     </section>

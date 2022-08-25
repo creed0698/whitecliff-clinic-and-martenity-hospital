@@ -4,7 +4,7 @@ error_reporting(0);
 include("dbconnection.php");
 
 // fetch files
-$sql = "select filename from martenityfiles";
+$sql = "select filename from maternityfiles";
 $result = mysqli_query($con, $sql);
 ?>
 
@@ -49,17 +49,17 @@ $result = mysqli_query($con, $sql);
             <div class="form-group">
                 <input type="submit" name="submit" value="Upload" class="btn btn-info"/>
             </div>
-            <?php if(isset($_GET['st'])) { ?>
+            <?php if (isset($_GET['st'])) { ?>
                 <div class="alert alert-danger text-center">
                 <?php if ($_GET['st'] == 'success') {
-                        echo "File Uploaded Successfully!";
-                    }
-                    else
-                    {
-                        echo 'Invalid File Extension!';
-                    } ?>
+        echo "File Uploaded Successfully!";
+    }
+    else {
+        echo 'Invalid File Extension!';
+    }?>
                 </div>
-            <?php } ?>
+            <?php
+}?>
         </form>
         </div>
     </div>
@@ -77,15 +77,16 @@ $result = mysqli_query($con, $sql);
                 </thead>
                 <tbody>
                 <?php
-                $i = 1;
-                while($row = mysqli_fetch_array($result)) { ?>
+$i = 1;
+while ($row = mysqli_fetch_array($result)) { ?>
                 <tr>
                     <td><?php echo $i++; ?></td>
                     <td><?php echo $row['filename']; ?></td>
                     <td><a href="uploads/<?php echo $row['filename']; ?>" target="_blank">View</a></td>
                     <td><a href="uploads/<?php echo $row['filename']; ?>" download>Download</td>
                 </tr>
-                <?php } ?>
+                <?php
+}?>
                 </tbody>
             </table>
         </div>

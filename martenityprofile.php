@@ -4,15 +4,16 @@ error_reporting(0);
 include("adheader.php");
 include("dbconnection.php");
 if (isset($_POST['submit'])) {
-	$sql = "UPDATE martenity SET martenityname='$_POST[martenityname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]' WHERE patientid='$_SESSION[patientid]'";
+	$sql = "UPDATE maternity SET maternityname='$_POST[maternityname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]' WHERE patientid='$_SESSION[patientid]'";
 	if ($qsql = mysqli_query($con, $sql)) {
 		echo "<script>alert('patient record updated successfully...');</script>";
-	} else {
+	}
+	else {
 		echo mysqli_error($con);
 	}
 }
-if (isset($_SESSION['martenityid'])) {
-	$sql = "SELECT * FROM martenity WHERE martenityid='$_SESSION[martenityid]' ";
+if (isset($_SESSION['maternityid'])) {
+	$sql = "SELECT * FROM maternity WHERE maternityid='$_SESSION[maternityid]' ";
 	$qsql = mysqli_query($con, $sql);
 	$rsedit = mysqli_fetch_array($qsql);
 }
@@ -34,7 +35,7 @@ if (isset($_SESSION['martenityid'])) {
 									<label for="">Patient name</label>
 									<div class="form-line">
 
-										<input class="form-control" type="text" name="martenityname" id="martenityname" value="<?php echo $rsedit['martenityname']; ?>" />
+										<input class="form-control" type="text" name="maternityname" id="maternityname" value="<?php echo $rsedit['maternityname']; ?>" />
 									</div>
 								</div>
 							</div>
@@ -117,15 +118,16 @@ if (isset($_SESSION['martenityid'])) {
 											<select name="select2" id="select2" class="form-control show-tick">
 												<option value="" selected hidden="">Select</option>
 												<?php
-												$arr = array("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-");
-												foreach ($arr as $val) {
-													if ($val == $rsedit['bloodgroup']) {
-														echo "<option value='$val' selected>$val</option>";
-													} else {
-														echo "<option value='$val'>$val</option>";
-													}
-												}
-												?>
+$arr = array("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-");
+foreach ($arr as $val) {
+	if ($val == $rsedit['bloodgroup']) {
+		echo "<option value='$val' selected>$val</option>";
+	}
+	else {
+		echo "<option value='$val'>$val</option>";
+	}
+}
+?>
 											</select>
 										</div>
 									</div>
@@ -139,15 +141,16 @@ if (isset($_SESSION['martenityid'])) {
 											<select name="select3" id="select3" class="form-control show-tick">
 												<option value="" selected="" hidden="">Select</option>
 												<?php
-												$arr = array("MALE", "FEMALE");
-												foreach ($arr as $val) {
-													if ($val == $rsedit['gender']) {
-														echo "<option value='$val' selected>$val</option>";
-													} else {
-														echo "<option value='$val'>$val</option>";
-													}
-												}
-												?>
+$arr = array("MALE", "FEMALE");
+foreach ($arr as $val) {
+	if ($val == $rsedit['gender']) {
+		echo "<option value='$val' selected>$val</option>";
+	}
+	else {
+		echo "<option value='$val'>$val</option>";
+	}
+}
+?>
 											</select>
 										</div>
 									</div>
@@ -185,13 +188,13 @@ include("adfooter.php");
 
 
 	function validateform() {
-		if (document.frmpatprfl.martenityname.value == "") {
+		if (document.frmpatprfl.maternityname.value == "") {
 			alert("Patient name should not be empty..");
-			document.frmpatprfl.martenityname.focus();
+			document.frmpatprfl.maternityname.focus();
 			return false;
-		} else if (!document.frmpatprfl.martenityname.value.match(alphaspaceExp)) {
+		} else if (!document.frmpatprfl.maternityname.value.match(alphaspaceExp)) {
 			alert("Patient name not valid..");
-			document.frmpatprfl.martenityname.focus();
+			document.frmpatprfl.maternityname.focus();
 			return false;
 		} else if (document.frmpatprfl.admissiondate.value == "") {
 			alert("Admission date should not be empty..");

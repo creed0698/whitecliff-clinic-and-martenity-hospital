@@ -4,14 +4,15 @@ error_reporting(0);
 include("adheader.php");
 include("dbconnection.php");
 if (isset($_POST['submit'])) {
-    $sql = "UPDATE martenity SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND martenityid='$_SESSION[martenityid]'";
+    $sql = "UPDATE maternity SET password='$_POST[newpassword]' WHERE password='$_POST[oldpassword]' AND maternityid='$_SESSION[maternityid]'";
     $qsql = mysqli_query($con, $sql);
     if (mysqli_affected_rows($con) == 1) {
         echo "<div class='alert alert-success'>
                 Password has been updated successfully
             </div>
             <script>alert('..');</script>";
-    } else {
+    }
+    else {
         echo "<div class='alert alert-danger'>
                     Update Failed
             </div>";

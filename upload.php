@@ -4,19 +4,17 @@ error_reporting(0);
 // include("martenitymanage.php");
 include("dbconnection.php");
 //check if form is submitted
-if (isset($_POST['submit']))
+if (isset($_POST['submit'])) 
 {
     $filename = $_FILES['file']['name'];
 
     //upload file
-    if($filename != '')
-    {
+    if ($filename != '') {
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        $allowed = ['pdf', 'txt', 'doc', 'docx', 'png', 'jpg', 'jpeg',  'gif'];
-    
+        $allowed = ['pdf', 'txt', 'doc', 'docx', 'png', 'jpg', 'jpeg', 'gif'];
+
         //check if file type is valid
-        if (in_array($ext, $allowed))
-        {
+        if (in_array($ext, $allowed)) {
             // get last record id
             // $sql = 'select max(id) as id from martenityfiles';
             // $result = mysqli_query($con, $sql);
@@ -30,17 +28,16 @@ if (isset($_POST['submit']))
 
             //set target directory
             $path = 'uploads/';
-                
+
             $created = @date('Y-m-d H:i:s');
-            move_uploaded_file($_FILES['file']['tmp_name'],($path . $filename));
-            
+            move_uploaded_file($_FILES['file']['tmp_name'], ($path . $filename));
+
             // insert file details into database
-            $sql = "INSERT INTO martenityfiles(filename, created) VALUES('$filename', '$created')";
+            $sql = "INSERT INTO maternityfiles(filename, created) VALUES('$filename', '$created')";
             mysqli_query($con, $sql);
             header("Location: martenitymanage.php?st=success");
         }
-        else
-        {
+        else {
             header("Location: martenitymanage.php?st=error");
         }
     }

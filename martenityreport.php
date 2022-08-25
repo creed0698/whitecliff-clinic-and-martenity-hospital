@@ -4,23 +4,26 @@ error_reporting(0);
 include("adheader.php");
 if (isset($_POST['submit'])) {
 	if (isset($_GET['editid'])) {
-		$sql = "UPDATE martenityap SET martenityid='$_POST[select4]',branchid='$_POST[select5]',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]',serviceid='$_POST[select6]',payid='$_POST[select7]',status='$_POST[select]' WHERE martenityappointid='$_GET[editid]'";
+		$sql = "UPDATE maternityap SET maternityid='$_POST[select4]',branchid='$_POST[select5]',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]',serviceid='$_POST[select6]',payid='$_POST[select7]',status='$_POST[select]' WHERE maternityappointid='$_GET[editid]'";
 		if ($qsql = mysqli_query($con, $sql)) {
 			echo "<script>alert('Appointment Record Updated Successfully!');</script>";
-		} else {
+		}
+		else {
 			echo mysqli_error($con);
 		}
-	} else {
-		$sql = "INSERT INTO martenityap(martenityid,branchid,appointmentdate,appointmenttime,serviceid,payid,status) values('$_POST[select4]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select7]','$_POST[select]')";
+	}
+	else {
+		$sql = "INSERT INTO maternityap(maternityid,branchid,appointmentdate,appointmenttime,serviceid,payid,status) values('$_POST[select4]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select7]','$_POST[select]')";
 		if ($qsql = mysqli_query($con, $sql)) {
 			echo "<script>alert('Appointment Record Inserted Successfully!');</script>";
-		} else {
+		}
+		else {
 			echo mysqli_error($con);
 		}
 	}
 }
 if (isset($_GET['editid'])) {
-	$sql = "SELECT * FROM martenityap WHERE martenityappointid='$_GET[editid]' ";
+	$sql = "SELECT * FROM maternityap WHERE maternityappointid='$_GET[editid]' ";
 	$qsql = mysqli_query($con, $sql);
 	$rsedit = mysqli_fetch_array($qsql);
 }
@@ -148,12 +151,12 @@ if (isset($_GET['editid'])) {
 
 
 		<?php
-		if (isset($_SESSION['adminid'])) {
-		?>
+if (isset($_SESSION['adminid'])) {
+?>
 		
 		<?php
-		}
-		?>
+}
+?>
 		</p>
 	</div>
 </div>

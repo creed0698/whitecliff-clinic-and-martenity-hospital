@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `wcmh`
+-- Database: `hms`
 --
 
 -- --------------------------------------------------------
@@ -37,6 +37,14 @@ CREATE TABLE `admin` (
   `usertype` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`adminid`, `adminname`, `loginid`, `password`, `status`, `usertype`) VALUES
+(1, 'ITSC', 'admin', '123456789', 'Active', '');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `appointment`
@@ -70,7 +78,7 @@ CREATE TABLE `maternityap` (
   `appointmentdate` date NOT NULL,
   `appointmenttime` time NOT NULL,
   `serviceid` int(10) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(10) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -122,12 +130,11 @@ CREATE TABLE `branch` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `branch`
+-- Dumping data for table `department`
 --
 
-INSERT INTO `branch` (`branchid`, `branchname`, `description`,  `status`) VALUES
-(1, 'Whitecliff', 'Whitecliff Branch', 'Active'),
-(2, 'Eastview', 'Eastview Branch', 'Active');
+INSERT INTO `branch` (`branchid`, `branchname`, `description`, `status`) VALUES
+(1, 'Whitecliff', 'Whitecliff Branch', 'Active');
 
 -- --------------------------------------------------------
 
@@ -148,6 +155,14 @@ CREATE TABLE `doctor` (
   `consultancy_charge` float(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`doctorid`, `doctorname`, `mobileno`, `departmentid`, `loginid`, `password`, `status`, `education`, `experience`, `consultancy_charge`) VALUES
+(1, 'DOCTOR', '2125798361', 1, 'doctor', 'doctor123', 'Active', 'MBBS', 7.0, 800.00);
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `doctor_timings`
@@ -176,6 +191,14 @@ CREATE TABLE `medicine` (
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `medicine`
+--
+
+INSERT INTO `medicine` (`medicineid`, `medicinename`, `medicinecost`, `description`, `status`) VALUES
+(1, 'Paracetamol', 3.00, 'For fever per day 1 pc', 'Active');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `orders`
@@ -277,25 +300,8 @@ CREATE TABLE `offeredservice` (
   `servicecost` float(10,2) NOT NULL,
   `payment` varchar(10) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(10) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `offeredservice`
---
-
-INSERT INTO `offeredservice` (`serviceid`, `servicename`, `servicecost`, `payment`, `description`, `status`) VALUES
-(1, '24hr General Consultation', '', '', 'Consultation', 'Active'),
-(2, 'Maternity Booking', '', '', 'Booking', 'Active'),
-(3, 'Antenatal Care', '', '', 'Antenatal Care', 'Active'),
-(4, 'Baby Scale', '', '', 'Baby Scale' 'Active'),
-(5, 'Immunization', '', '', 'Immunization', 'Active'),
-(6, 'Baby Examination', '', '', 'Baby Examination', 'Active'),
-(7, 'Covid-19 Testing', '', '', 'Covid-19 Testing', 'Active'),
-(8, 'Scan', '', '', 'Health Scan', 'Active'),
-(9, 'Laboratory Tests', '', '', 'Lab Tests', 'Active');
-
--- --------------------------------------------------------
 
 -- --------------------------------------------------------
 
@@ -303,10 +309,10 @@ INSERT INTO `offeredservice` (`serviceid`, `servicename`, `servicecost`, `paymen
 -- Table structure for table `martenityfiles`
 --
 
-CREATE TABLE `maternityfiles` (
+CREATE TABLE `martenityfiles` (
   `fileid` int(10) NOT NULL,
   `filename` varchar(50) NOT NULL,
-  `created` date NOT NULL
+  `created` date NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -320,21 +326,8 @@ CREATE TABLE `payopt` (
   `payname` varchar(50) NOT NULL,
   `amount` float(10,2) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(10) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `payopt`
---
-
-INSERT INTO `payopt` (`payid`, `payname`, `amount`, `description`, `status`) VALUES
-(1, 'ZWL', '', 'Paid with ZWL', 'Active'),
-(2, 'USD', '', 'Paid with USD', 'Active'),
-(3, 'RTGS', '', 'Paid with RTGS', 'Active'),
-(1, 'ZIPIT', '', 'Paid with ZIPIT', 'Active'),
-(1, 'Mastercard', '', 'Paid with Mastercard', 'Active');
-
--- --------------------------------------------------------
 
 -- --------------------------------------------------------
 
@@ -385,6 +378,18 @@ CREATE TABLE `room` (
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`roomid`, `roomtype`, `roomno`, `noofbeds`, `room_tariff`, `status`) VALUES
+(15, 'GENERAL WARD', 1, 20, 500.00, 'Active'),
+(16, 'SPECIAL WARD', 2, 10, 100.00, 'Active'),
+(17, 'GENERAL WARD', 2, 10, 500.00, 'Active'),
+(18, 'GENERAL WARD', 121, 13, 150.00, 'Active'),
+(19, 'GENERAL WARD', 850, 11, 500.00, 'Active');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `service_type`
@@ -399,6 +404,19 @@ CREATE TABLE `service_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `service_type`
+--
+
+INSERT INTO `service_type` (`service_type_id`, `service_type`, `servicecharge`, `description`, `status`) VALUES
+(10, 'X-ray', 250.00, 'To take fractured photo copy', 'Active'),
+(11, 'Scanning', 450.00, 'To scan body from injury', 'Active'),
+(12, 'MRI', 300.00, 'Regarding body scan', 'Active'),
+(13, 'Blood Testing', 150.00, 'To detect the type of disease', 'Active'),
+(14, 'Diagnosis', 210.00, 'To analyse the diagnosis', 'Active');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `treatment`
 --
 
@@ -410,6 +428,12 @@ CREATE TABLE `treatment` (
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `treatment`
+--
+
+INSERT INTO `treatment` (`treatmentid`, `treatmenttype`, `treatment_cost`, `note`, `status`) VALUES
+(20, 'Blood test', '300.00', 'total IgE', 'Active');
 
 -- --------------------------------------------------------
 
@@ -446,6 +470,12 @@ CREATE TABLE `user` (
   `createddateandtime` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userid`, `loginname`, `password`, `patientname`, `mobileno`, `email`, `createddateandtime`) VALUES
+(1, 'user', 'admin', 'user1', '', '', '2022-02-09 11:21:45');
 
 --
 -- Indexes for dumped tables
@@ -466,8 +496,8 @@ ALTER TABLE `appointment`
 
 -- Indexes for table `martenityap`
 --
-ALTER TABLE `maternityap`
-  ADD PRIMARY KEY (`maternityappointid`);
+ALTER TABLE `martenityap`
+  ADD PRIMARY KEY (`martenityappointid`);
 
 --
 -- Indexes for table `billing`
@@ -481,6 +511,11 @@ ALTER TABLE `billing`
 ALTER TABLE `billing_records`
   ADD PRIMARY KEY (`billingservice_id`);
 
+--
+-- Indexes for table `department`
+--
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`departmentid`);
 
 --
 -- Indexes for table `branch`
@@ -522,8 +557,8 @@ ALTER TABLE `patient`
 --
 -- Indexes for table `martenity`
 --
-ALTER TABLE `maternity`
-  ADD PRIMARY KEY (`maternityid`),
+ALTER TABLE `martenity`
+  ADD PRIMARY KEY (`martenityid`),
   ADD KEY `loginid` (`loginid`);
 
 --
@@ -533,9 +568,9 @@ ALTER TABLE `payment`
   ADD PRIMARY KEY (`paymentid`);
 
 --
--- Indexes for table `martenityfiles`
+-- Indexes for table `martentyfiles`
 --
-ALTER TABLE `maternityfiles`
+ALTER TABLE `martentyfiles`
   ADD PRIMARY KEY (`fileid`);
 
 --
@@ -611,8 +646,8 @@ ALTER TABLE `appointment`
 --
 -- AUTO_INCREMENT for table `martenityap`
 --
-ALTER TABLE `maternityap`
-  MODIFY `maternityappointid` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `martenityap`
+  MODIFY `martenityappointid` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `billing`
@@ -626,6 +661,11 @@ ALTER TABLE `billing`
 ALTER TABLE `billing_records`
   MODIFY `billingservice_id` int(10) NOT NULL AUTO_INCREMENT;
 
+--
+-- AUTO_INCREMENT for table `department`
+--
+ALTER TABLE `department`
+  MODIFY `departmentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `branch`
@@ -666,13 +706,13 @@ ALTER TABLE `patient`
 --
 -- AUTO_INCREMENT for table `martenity`
 --
-ALTER TABLE `maternity`
-  MODIFY `maternityid` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `martenity`
+  MODIFY `martenityid` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `martenityfiles`
 --
-ALTER TABLE `maternityfiles`
+ALTER TABLE `martenityfiles`
   MODIFY `fileid` int(10) NOT NULL AUTO_INCREMENT;
 
 --

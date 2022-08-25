@@ -68,8 +68,8 @@ $tim = date("H:i:s");
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <?php
-            if (isset($_SESSION['adminid'])) {
-            ?>
+if (isset($_SESSION['adminid'])) {
+?>
                 <!--Admin Menu -->
                 <div class="menu">
                     <ul class="list">
@@ -131,13 +131,14 @@ $tim = date("H:i:s");
                     </ul>
                 </div>
                 <!-- Admin Menu -->
-            <?php } ?>
+            <?php
+}?>
 
 
             <!-- doctor Menu -->
             <?php
-            if (isset($_SESSION['doctorid'])) {
-            ?>
+if (isset($_SESSION['doctorid'])) {
+?>
                 <div class="menu">
                     <ul class="list">
                         <li class="header">MAIN NAVIGATION</li>
@@ -181,13 +182,15 @@ $tim = date("H:i:s");
                     </ul>
                 </div>
 
-            <?php }; ?>
+            <?php
+}
+; ?>
             <!-- doctor Menu -->
 
             <!-- patient Menu -->
             <?php
-            if (isset($_SESSION['patientid'])) {
-            ?>
+if (isset($_SESSION['patientid'])) {
+?>
                 <div class="menu">
                     <ul class="list">
                         <li class="header">MAIN NAVIGATION</li>
@@ -212,15 +215,17 @@ $tim = date("H:i:s");
                     </ul>
                 </div>
 
-            <?php }; ?>
+            <?php
+}
+; ?>
             <!-- patient Menu -->
 
 
 
                 <!-- martenity Menu -->
             <?php
-            if (isset($_SESSION['martenityid'])) {
-            ?>
+if (isset($_SESSION['maternityid'])) {
+?>
                 <div class="menu">
                     <ul class="list">
                         <li class="header">MAIN NAVIGATION</li>
@@ -244,7 +249,9 @@ $tim = date("H:i:s");
                     </ul>
                 </div>
 
-            <?php }; ?>
+            <?php
+}
+; ?>
             <!-- martenity Menu -->
 
         </aside>

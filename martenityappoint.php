@@ -7,28 +7,31 @@ $dt = date("Y-m-d");
 $tim = date("H:i:s");
 if (isset($_POST['submit'])) {
     if (isset($_GET['editid'])) {
-        $sql = "UPDATE martenityap SET martenityid='$_POST[select4]',branchid='$_POST[select5]',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]',serviceid='$_POST[select6]',payid='$_POST[select7]',status='$_POST[select]' WHERE martenityappointid='$_GET[editid]'";
+        $sql = "UPDATE maternityap SET maternityid='$_POST[select4]',branchid='$_POST[select5]',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]',serviceid='$_POST[select6]',payid='$_POST[select7]',status='$_POST[select]' WHERE maternityappointid='$_GET[editid]'";
         if ($qsql = mysqli_query($con, $sql)) {
             echo "<script>alert('Appointment Record Updated Successfully...');</script>";
-        } else {
+        }
+        else {
             echo mysqli_error($con);
         }
-    } else {
-        $sql = "UPDATE martenity SET status='Active' WHERE martenityid='$_POST[select4]'";
+    }
+    else {
+        $sql = "UPDATE maternity SET status='Active' WHERE maternityid='$_POST[select4]'";
         $qsql = mysqli_query($con, $sql);
 
-        $sql = "INSERT INTO martenityap(martenityid, branchid, appointmentdate, appointmenttime, serviceid,payid, status) values('$_POST[select4]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select7]','$_POST[select]')";
+        $sql = "INSERT INTO maternityap(maternityid, branchid, appointmentdate, appointmenttime, serviceid,payid, status) values('$_POST[select4]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select7]','$_POST[select]')";
         if ($qsql = mysqli_query($con, $sql)) {
 
             include("insertbillingrecord.php");
             echo "<script>alert('Appointment Record Inserted Successfully.');</script>";
-        } else {
+        }
+        else {
             echo mysqli_error($con);
         }
     }
 }
 if (isset($_GET['editid'])) {
-    $sql = "SELECT * FROM martenityap WHERE martenityappointid='$_GET[editid]' ";
+    $sql = "SELECT * FROM maternityap WHERE maternityappointid='$_GET[editid]' ";
     $qsql = mysqli_query($con, $sql);
     $rsedit = mysqli_fetch_array($qsql);
 }
@@ -54,31 +57,33 @@ if (isset($_GET['editid'])) {
                                 <div class="form-group">
                                     <div class="form-line">
                                         <?php
-                                        if (isset($_GET['patid'])) {
-                                            $sqlpatient = "SELECT * FROM martenity WHERE martenityid='$_GET[patid]'";
-                                            $qsqlpatient = mysqli_query($con, $sqlpatient);
-                                            $rspatient = mysqli_fetch_array($qsqlpatient);
-                                            echo $rspatient['martenityname'] . " (Patient ID - $rspatient[martenityid])";
-                                            echo "<input type='hidden' name='select4' value='$rspatient[martenityid]'>";
-                                        } else {
-                                        ?>
+if (isset($_GET['patid'])) {
+    $sqlpatient = "SELECT * FROM maternity WHERE maternityid='$_GET[patid]'";
+    $qsqlpatient = mysqli_query($con, $sqlpatient);
+    $rspatient = mysqli_fetch_array($qsqlpatient);
+    echo $rspatient['maternityname'] . " (Patient ID - $rspatient[maternityid])";
+    echo "<input type='hidden' name='select4' value='$rspatient[maternityid]'>";
+}
+else {
+?>
                                             <select name="select4" id="select4" class=" form-control show-tick">
                                                 <option value="">Select Patient</option>
                                                 <?php
-                                                $sqlpatient = "SELECT * FROM martenity WHERE status='Active'";
-                                                $qsqlpatient = mysqli_query($con, $sqlpatient);
-                                                while ($rspatient = mysqli_fetch_array($qsqlpatient)) {
-                                                    if ($rspatient['martenityid'] == $rsedit['martenityid']) {
-                                                        echo "<option value='$rspatient[martenityid]' selected>$rspatient[martenityid] - $rspatient[martenityname]</option>";
-                                                    } else {
-                                                        echo "<option value='$rspatient[martenityid]'>$rspatient[martenityid] - $rspatient[martenityname]</option>";
-                                                    }
-                                                }
-                                                ?>
+    $sqlpatient = "SELECT * FROM maternity WHERE status='Active'";
+    $qsqlpatient = mysqli_query($con, $sqlpatient);
+    while ($rspatient = mysqli_fetch_array($qsqlpatient)) {
+        if ($rspatient['maternityid'] == $rsedit['maternityid']) {
+            echo "<option value='$rspatient[maternityid]' selected>$rspatient[maternityid] - $rspatient[maternityname]</option>";
+        }
+        else {
+            echo "<option value='$rspatient[maternityid]'>$rspatient[maternityid] - $rspatient[maternityname]</option>";
+        }
+    }
+?>
                                             </select>
                                         <?php
-                                        }
-                                        ?>
+}
+?>
 
                                     </div>
                                 </div>
@@ -89,16 +94,17 @@ if (isset($_GET['editid'])) {
                                         <select name="select5" id="select5" class=" form-control show-tick">
                                             <option value="">Select Branch</option>
                                             <?php
-                                            $sqlbranch = "SELECT * FROM branch WHERE status='Active'";
-                                            $qsqlbranch = mysqli_query($con, $sqlbranch);
-                                            while ($rsbranch = mysqli_fetch_array($qsqlbranch)) {
-                                                if ($rsbranch['branchid'] == $rsedit['branchid']) {
-                                                    echo "<option value='$rsbranch[branchid]' selected>$rsbranch[branchname]</option>";
-                                                } else {
-                                                    echo "<option value='$rsbranch[branchid]'>$rsbranch[branchname]</option>";
-                                                }
-                                            }
-                                            ?>
+$sqlbranch = "SELECT * FROM branch WHERE status='Active'";
+$qsqlbranch = mysqli_query($con, $sqlbranch);
+while ($rsbranch = mysqli_fetch_array($qsqlbranch)) {
+    if ($rsbranch['branchid'] == $rsedit['branchid']) {
+        echo "<option value='$rsbranch[branchid]' selected>$rsbranch[branchname]</option>";
+    }
+    else {
+        echo "<option value='$rsbranch[branchid]'>$rsbranch[branchname]</option>";
+    }
+}
+?>
                                         </select>
 
                                     </div>
@@ -149,16 +155,17 @@ if (isset($_GET['editid'])) {
                                         <select name="select6" id="select6" class=" form-control show-tick">
                                             <option value="">Select Service</option>
                                             <?php
-                                            $sqloffer = "SELECT * FROM offeredservice WHERE status='Active'";
-                                            $qsqloffer = mysqli_query($con, $sqloffer);
-                                            while ($rsoffer = mysqli_fetch_array($qsqloffer)) {
-                                                if ($rsoffer['serviceid'] == $rsedit['serviceid']) {
-                                                    echo "<option value='$rsoffer[serviceid]' selected>$rsoffer[servicename]</option>";
-                                                } else {
-                                                    echo "<option value='$rsoffer[serviceid]'>$rsoffer[servicename]</option>";
-                                                }
-                                            }
-                                            ?>
+$sqloffer = "SELECT * FROM offeredservice WHERE status='Active'";
+$qsqloffer = mysqli_query($con, $sqloffer);
+while ($rsoffer = mysqli_fetch_array($qsqloffer)) {
+    if ($rsoffer['serviceid'] == $rsedit['serviceid']) {
+        echo "<option value='$rsoffer[serviceid]' selected>$rsoffer[servicename]</option>";
+    }
+    else {
+        echo "<option value='$rsoffer[serviceid]'>$rsoffer[servicename]</option>";
+    }
+}
+?>
                                         </select>
 
                                     </div>
@@ -170,16 +177,17 @@ if (isset($_GET['editid'])) {
                                         <select name="select7" id="select7" class=" form-control show-tick">
                                             <option value="">Select Option</option>
                                             <?php
-                                            $sqlpay = "SELECT * FROM payopt WHERE status='Active'";
-                                            $qsqlpay = mysqli_query($con, $sqlpay);
-                                            while ($rspay = mysqli_fetch_array($qsqlpay)) {
-                                                if ($rspay['payid'] == $rsedit['payid']) {
-                                                    echo "<option value='$rspay[payid]' selected>$rspay[payname]</option>";
-                                                } else {
-                                                    echo "<option value='$rspay[payid]'>$rspay[payname]</option>";
-                                                }
-                                            }
-                                            ?>
+$sqlpay = "SELECT * FROM payopt WHERE status='Active'";
+$qsqlpay = mysqli_query($con, $sqlpay);
+while ($rspay = mysqli_fetch_array($qsqlpay)) {
+    if ($rspay['payid'] == $rsedit['payid']) {
+        echo "<option value='$rspay[payid]' selected>$rspay[payname]</option>";
+    }
+    else {
+        echo "<option value='$rspay[payid]'>$rspay[payname]</option>";
+    }
+}
+?>
                                         </select>
                                     </div>
                                     </div>
@@ -192,15 +200,16 @@ if (isset($_GET['editid'])) {
 
                                         <option value="">Select Status</option>
                                         <?php
-                                        $arr = array("Active", "Inactive");
-                                        foreach ($arr as $val) {
-                                            if ($val == $rsedit['status']) {
-                                                echo "<option value='$val' selected>$val</option>";
-                                            } else {
-                                                echo "<option value='$val'>$val</option>";
-                                            }
-                                        }
-                                        ?>
+$arr = array("Active", "Inactive");
+foreach ($arr as $val) {
+    if ($val == $rsedit['status']) {
+        echo "<option value='$val' selected>$val</option>";
+    }
+    else {
+        echo "<option value='$val'>$val</option>";
+    }
+}
+?>
                                     </select>
                                 </div>
                             </div>

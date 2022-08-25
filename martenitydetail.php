@@ -3,22 +3,23 @@ session_start();
 error_reporting(0);
 include("dbconnection.php");
 if (isset($_POST['submitpat'])) {
-    $sql = "INSERT INTO martenity(martenityname,admissiondate,admissiontime,address,mobileno,gender,dob) values('$_POST[martenityname]','$_POST[admissiondate]','$_POST[admissiontime]','$_POST[address]','$_POST[mobilenumber]','$_POST[select]','$_POST[dateofbirth]')";
+    $sql = "INSERT INTO maternity(maternityname,admissiondate,admissiontime,address,mobileno,gender,dob) values('$_POST[maternityname]','$_POST[admissiondate]','$_POST[admissiontime]','$_POST[address]','$_POST[mobilenumber]','$_POST[select]','$_POST[dateofbirth]')";
     if ($qsql = mysqli_query($con, $sql)) {
         echo "<script>alert('patients record inserted successfully...');</script>";
-    } else {
+    }
+    else {
         echo mysqli_error($con);
     }
 }
 
 if (isset($_GET['editid'])) {
-    $sql = "SELECT * FROM martenity WHERE martenityid='$_GET[editid]' ";
+    $sql = "SELECT * FROM maternity WHERE maternityid='$_GET[editid]' ";
     $qsql = mysqli_query($con, $sql);
     $rsedit = mysqli_fetch_array($qsql);
 }
 ?>
 <?php
-if (!isset($_GET['martenityid'])) {
+if (!isset($_GET['maternityid'])) {
 ?>
     <div class="container-fluid">
         <div class="block-header">
@@ -34,14 +35,14 @@ if (!isset($_GET['martenityid'])) {
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" name="martenityname" id="martenityname" />
+                                        <input type="text" name="maternityname" id="maternityname" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
                                     <div class="form-line">
-                                        <input type="text" name="martenityid" id="martenityid" />
+                                        <input type="text" name="maternityid" id="maternityid" />
                                     </div>
                                 </div>
                             </div>
@@ -96,9 +97,9 @@ if (!isset($_GET['martenityid'])) {
             <tbody>
                 <tr>
                     <td width="17%"><strong>Patient Name </strong></td>
-                    <td width="41%"><input type="text" name="martenityname" id="martenityname" /></td>
+                    <td width="41%"><input type="text" name="maternityname" id="maternityname" /></td>
                     <td width="16%"><strong>Patient ID</strong></td>
-                    <td width="26%"><input type="text" name="martenityid" id="martenityid" /></td>
+                    <td width="26%"><input type="text" name="maternityid" id="maternityid" /></td>
                 </tr>
                 <tr>
                     <td><strong>Address</strong></td>
@@ -125,8 +126,9 @@ if (!isset($_GET['martenityid'])) {
         </table>
     </form>
 <?php
-} else {
-    $sqlpatient = "SELECT * FROM martenity where martenityid='$_GET[martenityid]'";
+}
+else {
+    $sqlpatient = "SELECT * FROM maternity where maternityid='$_GET[maternityid]'";
     $qsqlpatient = mysqli_query($con, $sqlpatient);
     $rspatient = mysqli_fetch_array($qsqlpatient);
 ?>
@@ -135,9 +137,9 @@ if (!isset($_GET['martenityid'])) {
         <tbody>
             <tr>
                 <td width="16%"><strong>Patient Name </strong></td>
-                <td width="34%">&nbsp;<?php echo $rspatient['martenityname']; ?></td>
+                <td width="34%">&nbsp;<?php echo $rspatient['maternityname']; ?></td>
                 <td width="16%"><strong>Patient ID</strong></td>
-                <td width="34%">&nbsp;<?php echo $rspatient['martenityid']; ?></td>
+                <td width="34%">&nbsp;<?php echo $rspatient['maternityid']; ?></td>
             </tr>
             <tr>
                 <td><strong>Address</strong></td>
@@ -160,13 +162,13 @@ if (!isset($_GET['martenityid'])) {
 
 <script type="application/javascript">
     function validateform() {
-        if (document.frmpatdet.martenityname.value == "") {
+        if (document.frmpatdet.maternityname.value == "") {
             alert("Patient name should not be empty..");
-            document.frmpatdet.martenityname.focus();
+            document.frmpatdet.maternityname.focus();
             return false;
-        } else if (document.frmpatdet.martenityid.value == "") {
+        } else if (document.frmpatdet.maternityid.value == "") {
             alert("Patient ID should not be empty..");
-            document.frmpatdet.martenityid.focus();
+            document.frmpatdet.maternityid.focus();
             return false;
         } else if (document.frmpatdet.admissiondate.value == "") {
             alert("Admission date should not be empty..");

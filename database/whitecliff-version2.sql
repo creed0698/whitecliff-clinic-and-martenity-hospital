@@ -288,7 +288,7 @@ INSERT INTO `offeredservice` (`serviceid`, `servicename`, `servicecost`, `paymen
 (1, '24hr General Consultation', '', '', 'Consultation', 'Active'),
 (2, 'Maternity Booking', '', '', 'Booking', 'Active'),
 (3, 'Antenatal Care', '', '', 'Antenatal Care', 'Active'),
-(4, 'Baby Scale', '', '', 'Baby Scale' 'Active'),
+(4, 'Baby Scale', '', '', 'Baby Scale', 'Active'),
 (5, 'Immunization', '', '', 'Immunization', 'Active'),
 (6, 'Baby Examination', '', '', 'Baby Examination', 'Active'),
 (7, 'Covid-19 Testing', '', '', 'Covid-19 Testing', 'Active'),
@@ -331,8 +331,8 @@ INSERT INTO `payopt` (`payid`, `payname`, `amount`, `description`, `status`) VAL
 (1, 'ZWL', '', 'Paid with ZWL', 'Active'),
 (2, 'USD', '', 'Paid with USD', 'Active'),
 (3, 'RTGS', '', 'Paid with RTGS', 'Active'),
-(1, 'ZIPIT', '', 'Paid with ZIPIT', 'Active'),
-(1, 'Mastercard', '', 'Paid with Mastercard', 'Active');
+(4, 'ZIPIT', '', 'Paid with ZIPIT', 'Active'),
+(5, 'Mastercard', '', 'Paid with Mastercard', 'Active');
 
 -- --------------------------------------------------------
 

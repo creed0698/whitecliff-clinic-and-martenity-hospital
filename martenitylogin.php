@@ -6,18 +6,19 @@ $dt = date("Y-m-d");
 $tim = date("H:i:s");
 
 include("dbconnection.php");
-if (isset($_SESSION['martenityid'])) {
+if (isset($_SESSION['maternityid'])) {
 	echo "<script>window.location='martenityaccount.php';</script>";
 }
 $err = '';
 if (isset($_POST['submit'])) {
-	$sql = "SELECT * FROM martenity WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' AND status='Active'";
+	$sql = "SELECT * FROM maternity WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' AND status='Active'";
 	$qsql = mysqli_query($con, $sql);
 	if (mysqli_num_rows($qsql) >= 1) {
 		$rslogin = mysqli_fetch_array($qsql);
-		$_SESSION['martenityid'] = $rslogin['martenityid'];
+		$_SESSION['maternityid'] = $rslogin['maternityid'];
 		echo "<script>window.location='martenityaccount.php';</script>";
-	} else {
+	}
+	else {
 		$err = "<div class='alert alert-danger'>
 		<strong>Oh !</strong> Change a few things up and try submitting again.
 	</div>";
@@ -47,8 +48,8 @@ if (isset($_POST['submit'])) {
 	<div class="container">
 		<div id="err">
 			<?php
-			echo $err;
-			?>
+echo $err;
+?>
 		</div>
 		<div class="card-top"></div>
 		<div class="card">
